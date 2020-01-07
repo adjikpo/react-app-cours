@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {MessageItem} from './MessageItem';
 
-const MessageList = () => {
-  const [messages, setMessage] = useState([
-    { user: 'Jefe', text: 'Welcome' },
-  ]);
+const MessageList = ({messages}) => {
     
   return (
     <ul>
@@ -12,8 +9,8 @@ const MessageList = () => {
           return (
               <MessageItem
                   key={i}
-                  username={message.user} 
-                  message={message.text}
+                  username={message.username} 
+                  message={message.message}
               />
           )
       }) }

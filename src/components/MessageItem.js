@@ -1,14 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Emoji from 'react-emoji-render';
+import styled from 'styled-components';
+
+const Thing = styled.div`
+    color: black;
+
+    .something {
+    border: 1px solid; // an element labeled ".something" inside <Thing>
+    display: block;
+    }
+
+`
 
 export const MessageItem = (props) => {
 
     return (
         <li>
-            <div>
+            <Thing>
                     <strong>@{ props.username }</strong>
-                    <div>{ props.message }</div>
-            </div>
+                    <div>
+                        <Emoji text={ props.message } />
+                    </div>
+            </Thing>
         </li>
     )
 
