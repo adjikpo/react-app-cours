@@ -1,19 +1,19 @@
-import React, { Component} from 'react';
+import React from 'react';
 import {MessageItem} from './MessageItem'
 
-class MessageList extends Component {
+const MessageList = () => {
 
-    render() {
+    
         return (
           <ul>
             <MessageItem />
-          <MessageItem />
-          <MessageItem />
-          <MessageItem />
-          <MessageItem />
+            <MessageItem />
+            <MessageItem />
+            <MessageItem />
+            <MessageItem />
           </ul>
         );
-      }
+      
 }
 
 export default MessageList;
