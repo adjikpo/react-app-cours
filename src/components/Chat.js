@@ -1,28 +1,23 @@
-import React, {useState} from "react";
-import PropTypes from 'prop-types';
+import React from "react";
 import MessageList from "./MessageList";
 import MessageBar from "./MessageBar";
+import { useSelector } from "react-redux";
 
 const Chat = () => {
-  const [messages, setMessages] = useState([]);
-  const handleMessageSubmit = message => {
-    const newMessage = { message: message, username: "Jefe" };
-    console.log(messages)
-    setMessages([...messages, newMessage]);
-  
-  };
-
+  const messages = useSelector(state => state.messages.messages);
+console.log(messages)
     return (
         <div>
           <div>Chat</div>
-          <MessageList messages={messages} />
-          <MessageBar handleMessageSubmit={handleMessageSubmit}/>
+          <MessageList messages={messages}/>
+          <MessageBar />
+
         </div>
       );
 };
 
-MessageBar.propTypes = {
-  handleMessageSubmit: PropTypes.func.isRequired
-} 
+// MessageBar.propTypes = {
+//   handleMessageSubmit: PropTypes.func.isRequired
+// } 
 
 export default Chat;

@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+import { addMessage } from "../actions/messages";
 
 
 const Button = styled.button`
@@ -22,24 +23,30 @@ const Input = styled.input`
   border-radius: 3px;
 `;
 
-const MessageBar = props => {
+const MessageBar = () => {
+    const dispatch = useDispatch();
     const [message, setMessage ]= useState('');
     
     const handleChange = (e) => { 
         setMessage(e.target.value);
     }
     const handleClick = () => {
-        props.handleMessageSubmit(message);
+        dispatch(addMessage({ username: 'Jefe', message: message }));
         setMessage('')
-        
     };
+    const handleEnter = (event) => {
+        if (event.key === 'Enter') {
+            handleClick();
+        }
+    }
     return (
         <div id='MessageBar'>
             <Input 
-            type="text" 
-            name="message"
-            value={message} 
-            onChange={handleChange} />
+                type="text" 
+                name="message"
+                value={message} 
+                onChange={handleChange}
+                onKeyPress={ handleEnter } />
 
             <Button 
             onClick={handleClick}>
@@ -49,8 +56,8 @@ const MessageBar = props => {
     ) 
 };
 
-MessageBar.propTypes = {
-    handleMessageSubmit: PropTypes.func.isRequired
-} 
+// MessageBar.propTypes = {
+//     handleMessageSubmit: PropTypes.func.isRequired
+// } 
 
 export default MessageBar;

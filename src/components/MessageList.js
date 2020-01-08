@@ -1,8 +1,11 @@
 import React from 'react';
 import {MessageItem} from './MessageItem';
+import { useSelector } from 'react-redux';
 
-const MessageList = ({messages}) => {
+const MessageList = () => {
     
+  const messages = useSelector(state =>
+    state.messages.messagesData)
   return (
     <ul>
         { messages.map((message, i) => {
@@ -16,7 +19,7 @@ const MessageList = ({messages}) => {
       }) }
     
     </ul>
-  );
+  )
       
 }
 
