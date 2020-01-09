@@ -18,12 +18,15 @@ const MessageBar = () => {
     const dispatch = useDispatch();
     const [message, setMessage ]= useState('');
     const username = useSelector(state => state.settings.username)
+    const options = { year: 'numeric', month: 'numeric', day: 'numeric', hour:'numeric', minute:'numeric', second:'numeric' };
+    const sentAt = new Date();
+
     
     const handleChange = (e) => { 
         setMessage(e.target.value);
     }
     const handleClick = () => {
-        dispatch(addMessage({ username: username , message: message }));
+        dispatch(addMessage({ username: username , message: message, sentAt: sentAt.toLocaleDateString('fr', options) }));
         setMessage('')
     };
     const handleEnter = (event) => {
@@ -39,10 +42,13 @@ const MessageBar = () => {
                 value={message} 
                 onChange={handleChange}
                 onKeyPress={ handleEnter } />
+
+            
             <Button 
             onClick={handleClick}>
                 Envoyer
             </Button>
+
         </div>
     ) 
 };

@@ -14,7 +14,7 @@ const Thing = styled.div`
 `
 
 export const MessageItem = (props) => {
-
+    
     return (
         <li>
             <Thing>
