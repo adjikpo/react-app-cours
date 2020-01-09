@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Chat from './components/Chat';
+import App from './components/App';
 import { Provider } from 'react-redux';
 import { createStore} from 'redux'
 import reducers from "./reducers";
@@ -14,7 +14,7 @@ let store = createStore(
 
 ReactDOM.render(
     <Provider store={store}> 
-        < Chat />
+        < App />
     </Provider>    
     , document.getElementById('root'));
 

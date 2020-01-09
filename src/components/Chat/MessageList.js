@@ -14,6 +14,7 @@ const MessageList = () => {
                   key={i}
                   username={message.username} 
                   message={message.message}
+                  sentAt={message.sentAt}
               />
           )
       }) }

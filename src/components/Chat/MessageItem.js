@@ -22,6 +22,7 @@ export const MessageItem = (props) => {
                     <div>
                         <Emoji text={ props.message } />
                     </div>
+                    <i>{ props.sentAt }</i>
             </Thing>
         </li>
     )
