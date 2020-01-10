@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { addMessage } from "../../actions/messages";
+//import {ws} from '../../service/websocket'
 
 
 const Button = styled.button`
@@ -26,7 +27,8 @@ const MessageBar = () => {
         setMessage(e.target.value);
     }
     const handleClick = () => {
-        dispatch(addMessage({ username: username , message: message, sentAt: sentAt.toLocaleDateString('fr', options) }));
+         dispatch(addMessage({ username: username , message: message, sentAt: sentAt.toLocaleDateString('fr', options) }));
+        //ws.send(JSON.stringify(send))
         setMessage('')
     };
     const handleEnter = (event) => {

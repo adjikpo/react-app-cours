@@ -36,7 +36,7 @@ const Login = () => {
     };
     const handleEnter = (e) => {
         if (e.key === 'Enter') {
-            handleClick();
+            handleClick(e);
         }
     }
     return (
