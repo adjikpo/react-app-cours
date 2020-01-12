@@ -1,4 +1,4 @@
-import {ADD_MESSAGE,GET_MESSAGES} from '../actions/messages';
+import {ADD_MESSAGE,GET_MESSAGES,LOAD_MESSAGE_PENDING,LOAD_MESSAGE_SUCCESS,LOAD_MESSAGE_ERROR} from '../actions/messages';
 
 const initialData = {
     messagesData: [
@@ -24,6 +24,29 @@ export default (state= initialData, action) =>  {
                     action.message
                 ],
             }
+        case LOAD_MESSAGE_PENDING:
+            return {...state,};
+
+        case LOAD_MESSAGE_SUCCESS:
+            // const newData = (msg, index) =>(
+            //     state.push(msg)
+            // );
+            // action.messages.forEach(newData);
+            console.log(action.messages)
+    
+            return  {
+                messagesData : [
+                    ...state.messagesData, 
+                    action.messages
+                ],
+            }
+
+        case LOAD_MESSAGE_ERROR:
+                return [...state.messagesData, {
+                    message : action.error,
+                username: "system",
+                sentAt  : new Date(),
+                }];
 
         default:
             return state

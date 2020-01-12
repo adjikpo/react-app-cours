@@ -3,14 +3,24 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
 import { Provider } from 'react-redux';
-import { createStore} from 'redux'
 import reducers from "./reducers";
 import * as serviceWorker from './serviceWorker';
-import ws from './service/websocket'
+//import ws from './service/websocket'
+import {applyMiddleware, compose, createStore} from "redux";
+import thunk from "redux-thunk";
 
+export const loggerMiddleware = store => next => action => {
+    console.log('---');
+    console.log(action);
+    next(action);
+};
 export const store = createStore(
     reducers,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    compose(
+        // applyMiddleware(thunk, loggerMiddleware),
+        applyMiddleware(thunk),
+        window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
+    )
 );
 
 ReactDOM.render(

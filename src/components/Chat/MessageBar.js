@@ -28,7 +28,6 @@ const MessageBar = () => {
     }
     const handleClick = () => {
          dispatch(addMessage({ username: username , message: message, sentAt: sentAt.toLocaleDateString('fr', options) }));
-        //ws.send(JSON.stringify(send))
         setMessage('')
     };
     const handleEnter = (event) => {
